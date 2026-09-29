@@ -1,0 +1,10 @@
+﻿source,pattern_or_method,image_count,reliable_grouping,note
+d1,d1_camera_and_date,14337,yes,camera/scene/sequence encoded explicitly in filename
+d6,near_duplicate_visual_audit,922,yes,camera/scene/sequence encoded explicitly in filename
+d6,unrecovered,5856,no,source split preserved; filename alone is insufficient for reliable scene grouping
+d7,near_duplicate_visual_audit,340,yes,camera/scene/sequence encoded explicitly in filename
+d7,unrecovered,2735,no,source split preserved; filename alone is insufficient for reliable scene grouping
+d8,d8_cc_camera_and_date,202,yes,camera/scene/sequence encoded explicitly in filename
+d8,d8_dji_numbered_series,155,yes,camera/scene/sequence encoded explicitly in filename
+d8,d8_explicit_flight,84,yes,camera/scene/sequence encoded explicitly in filename
+d8,unrecovered,471,no,source split preserved; filename alone is insufficient for reliable scene grouping

@@ -1,0 +1,22 @@
+{
+  "errors": [],
+  "manifest_rows": 25102,
+  "image_counts": {
+    "train": 19391,
+    "val": 4609,
+    "test": 1102
+  },
+  "label_files_checked": 25102,
+  "image_label_correspondence_ok": true,
+  "bbox_count": 45493,
+  "class_id_range": [
+    0,
+    12
+  ],
+  "bbox_validity_ok": true,
+  "exact_hash_leakage": {},
+  "recovered_group_leakage": {},
+  "roboflow_base_id_leakage": {},
+  "stats_csv_matches_labels": true,
+  "grouping_limitation": "D7 numeric-only IDs, most D6 heterogeneous names, and D8 bare numeric names lack reliable camera/scene boundaries; source-provided splits are retained for those records."
+}

@@ -1,0 +1,6 @@
+﻿focus,images_reviewed,result,note
+D6 mixed -> concrete_mixer,20,confirmed,All sampled instances are concrete mixer trucks; mapping retained.
+crane classes,32,source_label_noise,D6 Heavy_Equipment_1313 is visually a tower crane but source label is Mobile_crane; D1 crane manipulator includes visually borderline material-handler/long-reach excavator cases. Retained because no reliable automatic per-instance subtype rule exists.
+telehandler,20,confirmed,Sampled D1 forklift giraffe instances are telehandlers.
+piling_machine,20,confirmed,Sampled D7/D8 instances depict pile-driving or piling rigs/equipment.
+loader,20,confirmed_broad_merge,"Sample supports the agreed broad merge of wheel, backhoe, bucket and skid-steer loader variants."
