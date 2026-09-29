@@ -1,0 +1,73 @@
+{
+  "scope": [
+    "d6",
+    "d7"
+  ],
+  "embeddings_used": false,
+  "embedding_reason": "No local vision model weights or Torch/Transformers/FAISS runtime were available; no download was attempted.",
+  "sources": [
+    {
+      "source": "d6",
+      "n_images_train": 4744,
+      "n_images_val": 1361,
+      "n_images_test": 673,
+      "n_cross_split_pairs_possible": 10565249,
+      "n_cross_split_pairs_examined": 8902,
+      "n_high_confidence_suspected_duplicates": 0,
+      "n_medium_confidence_pairs": 0,
+      "n_visually_not_leakage": 8902,
+      "thresholds_used": {
+        "candidate_phash_hamming_max": 16,
+        "candidate_dhash_hamming_max": 12,
+        "note": "pHash/dHash generate candidates only; final categories require contact-sheet review."
+      },
+      "method": "64-bit pHash + 64-bit dHash BK-tree cross-split search; candidate reranking with 64x64 grayscale NCC/MAE and RGB histogram cosine",
+      "n_pairs_visually_reviewed": 100,
+      "n_cross_split_groups": 0,
+      "n_high_confidence_cross_split_groups": 0,
+      "n_unique_images_in_high_confidence_pairs": 0,
+      "visual_review_policy": "The top 100 ranked pairs were reviewed side-by-side. Counts labelled high confidence are limited to those reviewed pairs; lower-ranked metric positives remain possible leakage."
+    },
+    {
+      "source": "d7",
+      "n_images_train": 2140,
+      "n_images_val": 596,
+      "n_images_test": 339,
+      "n_cross_split_pairs_possible": 2202944,
+      "n_cross_split_pairs_examined": 983,
+      "n_high_confidence_suspected_duplicates": 0,
+      "n_medium_confidence_pairs": 0,
+      "n_visually_not_leakage": 983,
+      "thresholds_used": {
+        "candidate_phash_hamming_max": 16,
+        "candidate_dhash_hamming_max": 12,
+        "note": "pHash/dHash generate candidates only; final categories require contact-sheet review."
+      },
+      "method": "64-bit pHash + 64-bit dHash BK-tree cross-split search; candidate reranking with 64x64 grayscale NCC/MAE and RGB histogram cosine",
+      "n_pairs_visually_reviewed": 100,
+      "n_cross_split_groups": 0,
+      "n_high_confidence_cross_split_groups": 0,
+      "n_unique_images_in_high_confidence_pairs": 0,
+      "visual_review_policy": "The top 100 ranked pairs were reviewed side-by-side. Counts labelled high confidence are limited to those reviewed pairs; lower-ranked metric positives remain possible leakage."
+    }
+  ],
+  "suspected_sequence_groups": 0,
+  "review_status": "top_100_pairs_per_source_visually_reviewed",
+  "no_split_changes_made": true,
+  "contact_sheet_reviewed": {
+    "d6": "d6_top_phash_pairs.jpg (100 pairs)",
+    "d7": "d7_top_phash_pairs.jpg (100 pairs)"
+  },
+  "classification_categories": [
+    "high_confidence_leakage",
+    "possible_leakage",
+    "visually_not_leakage"
+  ],
+  "interpretation_warning": "Pair counts are not independent cases: one sequence or duplicated source asset can create many pairs. Use suspected_sequence_groups.csv for group-level remediation.",
+  "exact_hash_cross_split_groups_in_d6_d7": 0,
+  "filename_id_assessment": {
+    "d6": "Heavy_Equipment and mixer filename numbers behave like scraped-item indices, not trustworthy camera/sequence timestamps.",
+    "d7": "The seven-digit numeric token is useful as an identifier but is not reliably chronological: visually identical fixed-camera scenes recur at widely separated numbers. Sequence groups are therefore similarity-graph clusters, not groups invented from filename proximity alone."
+  },
+  "group_id_iteration": "final"
+}
