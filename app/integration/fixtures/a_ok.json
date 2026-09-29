@@ -1,0 +1,28 @@
+{
+  "fixture_id": "A_OK",
+  "synthetic_fixture": true,
+  "data_origin": {"planned_work": "source_excel", "detections": "synthetic"},
+  "mode": "instant",
+  "request": {
+    "context": {
+      "planned_work": "Устройство котлована",
+      "active_conditions": {},
+      "timestamp": "2026-09-27T10:00:00+03:00",
+      "camera_id": "cam-01",
+      "zone_id": "pit-a"
+    },
+    "detections": [
+      {"class": "excavator", "confidence": 0.93, "bbox": [100, 80, 420, 360]},
+      {"class": "dump_truck", "confidence": 0.88, "bbox": [440, 120, 760, 390]}
+    ]
+  },
+  "expected": {
+    "planned_work": "Устройство котлована",
+    "status": "OK",
+    "instant_status": "OK",
+    "persistent_status": null,
+    "observability": {"score": 1.0, "level": "HIGH"},
+    "match": {"score": 1.0, "coverage": 1.0, "confirmed_count": 2, "missing_count": 0, "uncertain_count": 0},
+    "metadata": {"timestamp": "2026-09-27T10:00:00+03:00", "camera_id": "cam-01", "zone_id": "pit-a", "target_zone_id": "pit-a"}
+  }
+}

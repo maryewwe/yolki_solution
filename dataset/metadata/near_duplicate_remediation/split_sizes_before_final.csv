@@ -1,0 +1,7 @@
+﻿source,split,before_images,after_images,delta_images
+d6,train,4750,4744,-6
+d6,val,1355,1361,6
+d6,test,673,673,0
+d7,train,2139,2140,1
+d7,val,592,596,4
+d7,test,344,339,-5

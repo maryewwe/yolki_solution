@@ -1,0 +1,15 @@
+names:
+  0: excavator
+  1: dump_truck
+  2: truck
+  3: loader
+  4: bulldozer
+  5: motor_grader
+  6: roller
+  7: concrete_mixer
+  8: telehandler
+  9: piling_machine
+  10: crane_manipulator
+  11: mobile_crane
+  12: tower_crane
+nc: 13

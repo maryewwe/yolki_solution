@@ -1,0 +1,12 @@
+[
+  {
+    "class": "excavator",
+    "confidence": 0.93,
+    "bbox": [100, 80, 420, 360]
+  },
+  {
+    "class": "dump_truck",
+    "confidence": 0.88,
+    "bbox": [440, 120, 760, 390]
+  }
+]

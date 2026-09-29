@@ -1,0 +1,39 @@
+{
+  "fixture_id": "H_TEMPORAL_ISOLATED_MISS",
+  "synthetic_fixture": true,
+  "data_origin": {"planned_work": "source_excel", "detections": "synthetic"},
+  "mode": "temporal",
+  "request": {
+    "observations": [
+      {
+        "context": {"planned_work": "Устройство котлована", "active_conditions": {}, "timestamp": "2026-09-27T11:00:00+03:00", "camera_id": "cam-01", "zone_id": "pit-a"},
+        "detections": [
+          {"class": "excavator", "confidence": 0.93, "bbox": [100, 80, 420, 360]},
+          {"class": "dump_truck", "confidence": 0.88, "bbox": [440, 120, 760, 390]}
+        ]
+      },
+      {
+        "context": {"planned_work": "Устройство котлована", "active_conditions": {}, "timestamp": "2026-09-27T11:07:00+03:00", "camera_id": "cam-01", "zone_id": "pit-a"},
+        "detections": [
+          {"class": "excavator", "confidence": 0.92, "bbox": [105, 82, 425, 362]}
+        ]
+      },
+      {
+        "context": {"planned_work": "Устройство котлована", "active_conditions": {}, "timestamp": "2026-09-27T11:19:00+03:00", "camera_id": "cam-01", "zone_id": "pit-a"},
+        "detections": [
+          {"class": "excavator", "confidence": 0.94, "bbox": [110, 84, 430, 364]},
+          {"class": "dump_truck", "confidence": 0.90, "bbox": [450, 125, 770, 395]}
+        ]
+      }
+    ],
+    "temporal_config": {"window_seconds": null, "min_observations": 3, "persistence_ratio": 0.75}
+  },
+  "expected": {
+    "planned_work": "Устройство котлована",
+    "status": "OK",
+    "instant_status": "OK",
+    "persistent_status": "OK",
+    "observation_count": 3,
+    "temporal": {"persistent_missing": [], "persistent_uncertain": []}
+  }
+}

@@ -1,0 +1,9 @@
+# Dependencies used by the three RF-DETR training notebooks
+# Original Kaggle runs used torch 2.10.0+cu128 (CUDA runtime supplied by Kaggle).
+
+rfdetr[train]==1.10.1
+torch==2.10.0
+numpy
+pandas
+PyYAML
+Pillow

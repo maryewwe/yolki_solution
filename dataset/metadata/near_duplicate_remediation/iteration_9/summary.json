@@ -1,0 +1,14 @@
+{
+  "backup_path": "D:\\lct\\datasets\\construction_v1_remediation_backup_20260922T210230",
+  "processed_high_confidence_groups": 5,
+  "moved_images": 12,
+  "move_directions": {
+    "test->train": 2,
+    "train->val": 3,
+    "test->val": 2,
+    "val->train": 2,
+    "train->test": 3
+  },
+  "selection_policy": "minimum moves first (destination restricted to an existing group majority/tie), then joint image-split and per-class bbox balance optimization",
+  "taxonomy_or_annotation_content_changed": false
+}

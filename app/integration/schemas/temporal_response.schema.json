@@ -1,0 +1,115 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://construction-monitoring.local/schemas/temporal_response.schema.json",
+  "title": "Construction monitoring temporal update response",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "planned_work",
+    "work_group",
+    "profile_id",
+    "status",
+    "instant_status",
+    "persistent_status",
+    "observation_count",
+    "observability",
+    "match",
+    "detections",
+    "possible_unexpected",
+    "evidence",
+    "metadata",
+    "explanation",
+    "temporal",
+    "observations",
+    "latest_result"
+  ],
+  "properties": {
+    "planned_work": {"type": "string"},
+    "work_group": {"type": "string"},
+    "profile_id": {"type": "integer", "minimum": 0, "maximum": 34},
+    "status": {
+      "type": "string",
+      "enum": ["OK", "WARNING", "UNCERTAIN", "NOT_MONITORABLE"]
+    },
+    "instant_status": {"$ref": "analysis_response.schema.json#/$defs/instantStatus"},
+    "persistent_status": {
+      "type": "string",
+      "enum": ["OK", "WARNING", "UNCERTAIN", "NOT_MONITORABLE", "INSUFFICIENT_DATA"]
+    },
+    "observation_count": {"type": "integer", "minimum": 1},
+    "observability": {"$ref": "analysis_response.schema.json#/$defs/observability"},
+    "match": {"$ref": "analysis_response.schema.json#/$defs/match"},
+    "detections": {"$ref": "analysis_response.schema.json#/$defs/detectionBuckets"},
+    "possible_unexpected": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["class", "display_name"],
+        "properties": {"class": {"type": "string"}, "display_name": {"type": "string"}}
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "items": {"$ref": "analysis_response.schema.json#/$defs/evidence"}
+    },
+    "metadata": {"$ref": "analysis_response.schema.json#/$defs/metadata"},
+    "explanation": {"type": "string"},
+    "temporal": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "window_seconds",
+        "min_observations",
+        "persistence_ratio",
+        "persistent_missing",
+        "persistent_uncertain"
+      ],
+      "properties": {
+        "window_seconds": {"type": ["number", "null"]},
+        "min_observations": {"type": "integer", "minimum": 1},
+        "persistence_ratio": {"type": "number", "exclusiveMinimum": 0.0, "maximum": 1.0},
+        "persistent_missing": {"type": "array", "items": {"$ref": "#/$defs/persistentRequirement"}},
+        "persistent_uncertain": {"type": "array", "items": {"$ref": "#/$defs/persistentRequirement"}}
+      }
+    },
+    "observations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "timestamp",
+          "camera_id",
+          "zone_id",
+          "instant_status",
+          "match_score",
+          "missing_requirement_ids",
+          "uncertain_requirement_ids"
+        ],
+        "properties": {
+          "timestamp": {"type": "string", "format": "date-time"},
+          "camera_id": {"type": "string"},
+          "zone_id": {"type": ["string", "null"]},
+          "instant_status": {"$ref": "analysis_response.schema.json#/$defs/instantStatus"},
+          "match_score": {"type": ["number", "null"], "minimum": 0.0, "maximum": 1.0},
+          "missing_requirement_ids": {"type": "array", "items": {"type": "string"}},
+          "uncertain_requirement_ids": {"type": "array", "items": {"type": "string"}}
+        }
+      }
+    },
+    "latest_result": {"$ref": "analysis_response.schema.json"}
+  },
+  "$defs": {
+    "persistentRequirement": {
+      "type": "object",
+      "required": ["requirement", "count", "ratio"],
+      "properties": {
+        "requirement": {"$ref": "analysis_response.schema.json#/$defs/requirement"},
+        "count": {"type": "integer", "minimum": 1},
+        "ratio": {"type": "number", "minimum": 0.0, "maximum": 1.0},
+        "missing_count": {"type": "integer", "minimum": 0},
+        "uncertain_count": {"type": "integer", "minimum": 0}
+      }
+    }
+  }
+}

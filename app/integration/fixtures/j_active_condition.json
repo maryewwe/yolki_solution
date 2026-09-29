@@ -1,0 +1,26 @@
+{
+  "fixture_id": "J_ACTIVE_CONDITION",
+  "synthetic_fixture": true,
+  "data_origin": {"planned_work": "source_excel", "detections": "synthetic"},
+  "mode": "instant",
+  "request": {
+    "context": {
+      "planned_work": "Жесткое основание",
+      "active_conditions": {"для бетонного основания": true},
+      "timestamp": "2026-09-27T12:35:00+03:00",
+      "camera_id": "cam-05",
+      "zone_id": "road-a"
+    },
+    "detections": [
+      {"class": "dump_truck", "confidence": 0.91, "bbox": [20, 60, 250, 240]},
+      {"class": "roller", "confidence": 0.89, "bbox": [270, 70, 500, 250]},
+      {"class": "motor_grader", "confidence": 0.87, "bbox": [520, 50, 820, 260]}
+    ]
+  },
+  "expected": {
+    "planned_work": "Жесткое основание",
+    "status": "WARNING",
+    "observability": {"score": 1.0, "level": "HIGH"},
+    "match": {"score": 0.75, "coverage": 1.0, "confirmed_count": 3, "missing_count": 1, "uncertain_count": 0, "missing": [{"id": "conditional:0:concrete_mixer", "condition": "для бетонного основания"}]}
+  }
+}

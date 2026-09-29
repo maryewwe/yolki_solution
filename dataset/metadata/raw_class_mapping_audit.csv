@@ -1,0 +1,47 @@
+﻿source,raw_class,raw_class_normalized,bbox_count,mapped_to
+d1,trailer,trailer,1305,
+d1,tanker,tanker,427,
+d1,truck,truck,1830,truck
+d1,backhoe loader,backhoe loader,2454,loader
+d1,gazelle,gazelle,4883,
+d1,crane manipulator,crane manipulator,847,crane_manipulator
+d1,dump truck,dump truck,7048,dump_truck
+d1,concrete mixer,concrete mixer,1224,concrete_mixer
+d1,excavator,excavator,8283,excavator
+d1,bucket loader big,bucket loader big,667,loader
+d1,forklift giraffe,forklift giraffe,706,telehandler
+d1,forklift standard,forklift standard,971,
+d1,loader,loader,2403,loader
+d1,autocran,autocran,1791,mobile_crane
+d1,bucket loader standard,bucket loader standard,865,loader
+d1,roller,roller,21,roller
+d1,cleaning equipment,cleaning equipment,1,
+d6,mixed,mixed,791,concrete_mixer
+d6,Excavator,excavator,1874,excavator
+d6,Loader,loader,639,loader
+d6,Dumb_truck,dumb truck,2253,dump_truck
+d6,Mobile_crane,mobile crane,765,mobile_crane
+d6,Bull_dozer,bull dozer,1341,bulldozer
+d6,Grader,grader,1147,motor_grader
+d6,Roller,roller,1132,roller
+d6,Bulldozer,bulldozer,3,bulldozer
+d7,Excavator,excavator,2265,excavator
+d7,ConcreteMixer,concretemixer,254,concrete_mixer
+d7,PumpTruck,pumptruck,361,
+d7,StaticCrane,staticcrane,1875,tower_crane
+d7,Truck,truck,835,truck
+d7,Crane,crane,482,AMBIGUOUS
+d7,PileDriving,piledriving,250,piling_machine
+d7,Roller,roller,198,roller
+d7,Bulldozer,bulldozer,205,bulldozer
+d7,Loader,loader,168,loader
+d8,excavator,excavator,961,excavator
+d8,lifting-equipment,lifting equipment,48,
+d8,dump-truck,dump truck,418,dump_truck
+d8,concrete-mixer,concrete mixer,195,concrete_mixer
+d8,concrete-pump,concrete pump,14,
+d8,tower-crane,tower crane,282,tower_crane
+d8,forklift,forklift,10,
+d8,piling-machine,piling machine,76,piling_machine
+d8,roller,roller,10,roller
+d8,bulldozer,bulldozer,83,bulldozer

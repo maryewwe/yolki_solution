@@ -1,0 +1,25 @@
+{
+  "fixture_id": "B_WARNING",
+  "synthetic_fixture": true,
+  "data_origin": {"planned_work": "source_excel", "detections": "synthetic"},
+  "mode": "instant",
+  "request": {
+    "context": {
+      "planned_work": "Устройство котлована",
+      "active_conditions": {},
+      "timestamp": "2026-09-27T10:05:00+03:00",
+      "camera_id": "cam-01",
+      "zone_id": "pit-a"
+    },
+    "detections": [
+      {"class": "excavator", "confidence": 0.94, "bbox": [100, 80, 420, 360]}
+    ]
+  },
+  "expected": {
+    "status": "WARNING",
+    "instant_status": "WARNING",
+    "persistent_status": null,
+    "match": {"score": 0.5, "coverage": 1.0, "confirmed_count": 1, "missing_count": 1, "uncertain_count": 0},
+    "uncertainty_present": false
+  }
+}
