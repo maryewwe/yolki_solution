@@ -28,6 +28,7 @@
 ```text
 final80_deployment_bundle.zip
 ```
+[Скачать FINAL80 Deployment Bundle](https://github.com/maryewwe/yolki_solution/releases/download/v1.0.0/final80_deployment_bundle.zip)
 
 Содержимое deployment bundle:
 
