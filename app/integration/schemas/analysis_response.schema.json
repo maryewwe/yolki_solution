@@ -1,0 +1,191 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://construction-monitoring.local/schemas/analysis_response.schema.json",
+  "title": "Construction monitoring instant analysis response",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "planned_work",
+    "work_group",
+    "profile_id",
+    "status",
+    "instant_status",
+    "persistent_status",
+    "observability",
+    "match",
+    "detections",
+    "possible_unexpected",
+    "evidence",
+    "explanation",
+    "requirements",
+    "metadata",
+    "uncertainty_present"
+  ],
+  "properties": {
+    "planned_work": {"type": "string"},
+    "work_group": {"type": "string"},
+    "profile_id": {"type": "integer", "minimum": 0, "maximum": 34},
+    "status": {"$ref": "#/$defs/instantStatus"},
+    "instant_status": {"$ref": "#/$defs/instantStatus"},
+    "persistent_status": {"type": "null"},
+    "observability": {"$ref": "#/$defs/observability"},
+    "match": {"$ref": "#/$defs/match"},
+    "detections": {"$ref": "#/$defs/detectionBuckets"},
+    "possible_unexpected": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["class", "display_name"],
+        "properties": {
+          "class": {"type": "string"},
+          "display_name": {"type": "string"}
+        }
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/evidence"}
+    },
+    "explanation": {"type": "string"},
+    "requirements": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source_text", "source_key", "rule"],
+      "properties": {
+        "source_text": {"type": "string"},
+        "source_key": {"type": ["string", "null"]},
+        "rule": {"type": "object"}
+      }
+    },
+    "metadata": {"$ref": "#/$defs/metadata"},
+    "uncertainty_present": {"type": "boolean"}
+  },
+  "$defs": {
+    "instantStatus": {
+      "type": "string",
+      "enum": ["OK", "WARNING", "UNCERTAIN", "NOT_MONITORABLE"]
+    },
+    "observability": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["score", "level"],
+      "properties": {
+        "score": {"type": "number", "minimum": 0.0, "maximum": 1.0},
+        "level": {"type": "string", "enum": ["NONE", "LOW", "MEDIUM", "HIGH"]}
+      }
+    },
+    "requirement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "type",
+        "classes",
+        "display_names",
+        "found_classes",
+        "found_display_names",
+        "source_terms"
+      ],
+      "properties": {
+        "id": {"type": "string"},
+        "type": {"type": "string"},
+        "classes": {"type": "array", "items": {"type": "string"}},
+        "display_names": {"type": "array", "items": {"type": "string"}},
+        "found_classes": {"type": "array", "items": {"type": "string"}},
+        "found_display_names": {"type": "array", "items": {"type": "string"}},
+        "source_terms": {"type": "array", "items": {"type": "string"}},
+        "condition": {"type": "string"},
+        "reason": {"type": "string"}
+      }
+    },
+    "match": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "score",
+        "coverage",
+        "confirmed_count",
+        "missing_count",
+        "uncertain_count",
+        "assessed_count",
+        "satisfied",
+        "missing",
+        "uncertain",
+        "supporting"
+      ],
+      "properties": {
+        "score": {"type": ["number", "null"], "minimum": 0.0, "maximum": 1.0},
+        "coverage": {"type": "number", "minimum": 0.0, "maximum": 1.0},
+        "confirmed_count": {"type": "integer", "minimum": 0},
+        "missing_count": {"type": "integer", "minimum": 0},
+        "uncertain_count": {"type": "integer", "minimum": 0},
+        "assessed_count": {"type": "integer", "minimum": 0},
+        "satisfied": {"type": "array", "items": {"$ref": "#/$defs/requirement"}},
+        "missing": {"type": "array", "items": {"$ref": "#/$defs/requirement"}},
+        "uncertain": {"type": "array", "items": {"$ref": "#/$defs/requirement"}},
+        "supporting": {"type": "array", "items": {"$ref": "#/$defs/requirement"}}
+      }
+    },
+    "detection": {
+      "type": "object",
+      "required": ["class", "confidence", "bbox", "camera_id", "zone_id"],
+      "properties": {
+        "class": {"type": ["string", "null"]},
+        "display_name": {"type": ["string", "null"]},
+        "confidence": {"type": ["number", "null"]},
+        "bbox": {
+          "oneOf": [
+            {"type": "null"},
+            {"type": "array", "minItems": 4, "maxItems": 4, "items": {"type": "number"}}
+          ]
+        },
+        "camera_id": {"type": ["string", "null"]},
+        "zone_id": {"type": ["string", "null"]},
+        "zone_verified": {"type": "boolean"},
+        "invalid_reason": {"type": "string"}
+      }
+    },
+    "detectionBuckets": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "accepted",
+        "rejected_low_confidence",
+        "rejected_unknown_class",
+        "rejected_zone_mismatch",
+        "rejected_invalid"
+      ],
+      "properties": {
+        "accepted": {"type": "array", "items": {"$ref": "#/$defs/detection"}},
+        "rejected_low_confidence": {"type": "array", "items": {"$ref": "#/$defs/detection"}},
+        "rejected_unknown_class": {"type": "array", "items": {"$ref": "#/$defs/detection"}},
+        "rejected_zone_mismatch": {"type": "array", "items": {"$ref": "#/$defs/detection"}},
+        "rejected_invalid": {"type": "array", "items": {"$ref": "#/$defs/detection"}}
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "required": ["code", "severity"],
+      "properties": {
+        "code": {"type": "string"},
+        "severity": {"type": "string", "enum": ["WARNING", "UNCERTAIN", "INFO", "ERROR"]},
+        "requirement_id": {"type": "string"},
+        "details": {"$ref": "#/$defs/requirement"},
+        "count": {"type": "integer", "minimum": 0},
+        "classes": {"type": "array", "items": {"type": "string"}},
+        "hard_violation": {"type": "boolean"}
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "required": ["timestamp", "camera_id", "zone_id", "target_zone_id"],
+      "properties": {
+        "timestamp": {"type": "string", "format": "date-time"},
+        "camera_id": {"type": "string"},
+        "zone_id": {"type": ["string", "null"]},
+        "target_zone_id": {"type": ["string", "null"]}
+      }
+    }
+  }
+}

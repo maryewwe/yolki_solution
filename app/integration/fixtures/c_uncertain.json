@@ -1,0 +1,25 @@
+{
+  "fixture_id": "C_UNCERTAIN",
+  "synthetic_fixture": true,
+  "data_origin": {"planned_work": "source_excel", "detections": "synthetic"},
+  "mode": "instant",
+  "request": {
+    "context": {
+      "planned_work": "Пересадка зеленых насождений",
+      "active_conditions": {},
+      "timestamp": "2026-09-27T10:10:00+03:00",
+      "camera_id": "cam-02",
+      "zone_id": "green-a"
+    },
+    "detections": [
+      {"class": "truck", "confidence": 0.91, "bbox": [20, 40, 250, 220]},
+      {"class": "mobile_crane", "confidence": 0.86, "bbox": [280, 30, 620, 300]}
+    ]
+  },
+  "expected": {
+    "status": "UNCERTAIN",
+    "observability": {"score": 0.833, "level": "HIGH"},
+    "match": {"score": 1.0, "coverage": 0.667, "confirmed_count": 2, "missing_count": 0, "uncertain_count": 1},
+    "uncertainty_present": true
+  }
+}

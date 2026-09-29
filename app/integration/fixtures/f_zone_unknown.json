@@ -1,0 +1,23 @@
+{
+  "fixture_id": "F_ZONE_UNKNOWN",
+  "synthetic_fixture": true,
+  "data_origin": {"planned_work": "source_excel", "detections": "synthetic"},
+  "mode": "instant",
+  "request": {
+    "context": {
+      "planned_work": "Устройство котлована",
+      "active_conditions": {},
+      "timestamp": "2026-09-27T10:25:00+03:00",
+      "camera_id": "cam-04"
+    },
+    "detections": [
+      {"class": "excavator", "confidence": 0.93, "bbox": [100, 80, 420, 360]},
+      {"class": "dump_truck", "confidence": 0.88, "bbox": [440, 120, 760, 390]}
+    ]
+  },
+  "expected": {
+    "status": "OK",
+    "match": {"score": 1.0, "coverage": 1.0},
+    "metadata": {"timestamp": "2026-09-27T10:25:00+03:00", "camera_id": "cam-04", "zone_id": null, "target_zone_id": null}
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "fixture_id": "D_NOT_MONITORABLE",
+  "synthetic_fixture": true,
+  "data_origin": {"planned_work": "source_excel", "detections": "synthetic"},
+  "mode": "instant",
+  "request": {
+    "context": {
+      "planned_work": "Отселение домов в пятне застройки",
+      "active_conditions": {},
+      "timestamp": "2026-09-27T10:15:00+03:00",
+      "camera_id": "cam-03"
+    },
+    "detections": []
+  },
+  "expected": {
+    "status": "NOT_MONITORABLE",
+    "observability": {"score": 0.0, "level": "NONE"},
+    "match": {"score": null, "coverage": 0.0, "confirmed_count": 0, "missing_count": 0, "uncertain_count": 0},
+    "metadata": {"zone_id": null, "target_zone_id": null}
+  }
+}

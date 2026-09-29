@@ -1,0 +1,89 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://construction-monitoring.local/schemas/analysis_request.schema.json",
+  "title": "Construction monitoring instant analysis request",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["context", "detections"],
+  "properties": {
+    "context": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["planned_work", "timestamp", "camera_id"],
+      "properties": {
+        "planned_work": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Must resolve to one existing work in work_catalog.json."
+        },
+        "active_conditions": {
+          "type": "object",
+          "default": {},
+          "propertyNames": {"type": "string", "minLength": 1},
+          "additionalProperties": {"type": "boolean"},
+          "description": "Keys must be defined by the resolved work profile."
+        },
+        "timestamp": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timezone-aware ISO 8601 timestamp; offset or Z is required."
+        },
+        "camera_id": {"type": "string", "minLength": 1},
+        "zone_id": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Optional observation/target zone assigned by the zone layer. Omit for whole-frame matching."
+        }
+      }
+    },
+    "detections": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/detection"}
+    }
+  },
+  "$defs": {
+    "detection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["class", "confidence", "bbox"],
+      "properties": {
+        "class": {
+          "type": "string",
+          "enum": [
+            "excavator",
+            "dump_truck",
+            "truck",
+            "loader",
+            "bulldozer",
+            "motor_grader",
+            "roller",
+            "concrete_mixer",
+            "telehandler",
+            "piling_machine",
+            "crane_manipulator",
+            "mobile_crane",
+            "tower_crane"
+          ]
+        },
+        "confidence": {"type": "number", "minimum": 0.0, "maximum": 1.0},
+        "bbox": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 4,
+          "prefixItems": [
+            {"type": "number", "minimum": 0},
+            {"type": "number", "minimum": 0},
+            {"type": "number", "minimum": 0},
+            {"type": "number", "minimum": 0}
+          ],
+          "$comment": "Adapter additionally enforces x_max > x_min and y_max > y_min."
+        },
+        "zone_id": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Optional enrichment from the zone layer, not a required CV output."
+        }
+      }
+    }
+  }
+}
