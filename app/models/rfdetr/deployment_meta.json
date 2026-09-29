@@ -1,0 +1,38 @@
+{
+  "model": "RF-DETR Medium",
+  "resolution": 640,
+  "num_classes": 13,
+  "class_names": [
+    "excavator",
+    "dump_truck",
+    "truck",
+    "loader",
+    "bulldozer",
+    "motor_grader",
+    "roller",
+    "concrete_mixer",
+    "telehandler",
+    "piling_machine",
+    "crane_manipulator",
+    "mobile_crane",
+    "tower_crane"
+  ],
+  "seed": 42,
+  "epochs": 30,
+  "lr": 2e-05,
+  "lr_encoder": 1e-05,
+  "use_ema": true,
+  "deployment_weights": "last_ema.pth copied as final_model.pth",
+  "external_checkpoint": "/kaggle/input/notebooks/maryewwe/lct-rfdetr-medium-640-finetune/rfdetr_medium_640_finetune/checkpoint_best_ema.pth",
+  "external_checkpoint_sha256": "8424a45c4adc548fe4bc82bd00f4fe6a5efb171771bdb3be18c278ffc9fe4145",
+  "final_model_sha256": "94a68be921b4e24cf12f362278c97bc2ae4ac47b1872a306ad9189e8e3702058",
+  "development_images": 80,
+  "former_train_images": 65,
+  "former_val_images": 15,
+  "test_images_used": 0,
+  "validation_note": "No held-out validation exists for FINAL80; valid is an 80-image train mirror and is infrastructure-only.",
+  "historical_reference_only": {
+    "previous_65_train_15_val_mAP50_95": 0.239801,
+    "note": "This metric belongs to the previous development model, not FINAL80."
+  }
+}
